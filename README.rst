@@ -9,7 +9,8 @@ Django Admin Restrict
     :alt: Latest PyPI version
 
 ``django-adminrestrict`` enables you to block access to the Django admin pages
-unless requests come from specific IP addresses.
+unless requests come from specific IP addresses. This is block on `GET` request and
+custom 403.html template can be used with this package.
 
 
 Requirements
@@ -62,7 +63,7 @@ First of all, you must add this project to your list of ``INSTALLED_APPS`` in
         ...
     )
 
-Next, install the ``FailedLoginMiddleware`` middleware::
+Next, install the ``AdminPagesRestrictMiddleware`` middleware::
 
     MIDDLEWARE_CLASSES = (
         'django.middleware.common.CommonMiddleware',
@@ -89,6 +90,8 @@ Usage
 Using ``django-adminrestrict`` is extremely simple.  Once you install the application
 and the middleware, all you need to do is update the allowed IP addresses `AllowedIP`
 section of the admin pages.
+
+And for custom 403 template, put the `403.html` page in project root templates directory.
 
 Adding allowed IP addresses
 ---------------------------
